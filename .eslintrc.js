@@ -20,7 +20,9 @@ module.exports = {
 				'@typescript-eslint/require-await': 'warn',
 				'@typescript-eslint/restrict-template-expressions': 'warn',
 				'@typescript-eslint/explicit-module-boundary-types': 'warn',
-				'no-await-in-loop': 'warn'
+				'@typescript-eslint/prefer-nullish-coalescing': 'warn',
+				'no-await-in-loop': 'warn',
+				'no-use-before-define': 'warn'
 			}
 		}
 	]
