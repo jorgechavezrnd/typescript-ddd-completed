@@ -1,0 +1,4 @@
+{
+  "mongo": { "url": "mongodb://localhost:27017/mooc-backend-test" },
+  "typeorm": { "port": 5433, "database": "mooc-backend-test" }
+}
