@@ -21,6 +21,8 @@ module.exports = {
 				'@typescript-eslint/restrict-template-expressions': 'warn',
 				'@typescript-eslint/explicit-module-boundary-types': 'warn',
 				'@typescript-eslint/prefer-nullish-coalescing': 'warn',
+				'@typescript-eslint/no-empty-function': 'warn',
+				'@typescript-eslint/no-unsafe-member-access': 'warn',
 				'no-await-in-loop': 'warn',
 				'no-use-before-define': 'warn'
 			}
