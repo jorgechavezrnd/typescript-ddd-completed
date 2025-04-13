@@ -9,6 +9,7 @@ import { EnvironmentArranger } from '../../../../../Contexts/Shared/infrastructu
 let _request: request.Test;
 let application: MoocBackendApp;
 let _response: request.Response;
+let environmentArranger: EnvironmentArranger;
 
 Given('I send a GET request to {string}', (route: string) => {
 	_request = request(application.httpServer).get(route);
@@ -28,20 +29,22 @@ Then('the response should be empty', () => {
 	assert.deepStrictEqual(_response.body, {});
 });
 
+Then('the response content should be:', response => {
+	assert.deepStrictEqual(_response.body, JSON.parse(response));
+});
+
 BeforeAll(async () => {
-	const environmentArranger: Promise<EnvironmentArranger> = container.get(
+	environmentArranger = await container.get<Promise<EnvironmentArranger>>(
 		'Mooc.EnvironmentArranger'
 	);
-	await (await environmentArranger).arrange();
+	environmentArranger.arrange();
+
 	application = new MoocBackendApp();
 	await application.start();
 });
 
 AfterAll(async () => {
-	const environmentArranger: Promise<EnvironmentArranger> = container.get(
-		'Mooc.EnvironmentArranger'
-	);
-	await (await environmentArranger).arrange();
-	await (await environmentArranger).close();
+	await environmentArranger.close();
+
 	await application.stop();
 });

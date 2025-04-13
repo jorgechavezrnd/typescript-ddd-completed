@@ -23,8 +23,12 @@ module.exports = {
 				'@typescript-eslint/prefer-nullish-coalescing': 'warn',
 				'@typescript-eslint/no-empty-function': 'warn',
 				'@typescript-eslint/no-unsafe-member-access': 'warn',
+				'@typescript-eslint/no-unsafe-return': 'warn',
+				'@typescript-eslint/no-unsafe-call': 'warn',
 				'no-await-in-loop': 'warn',
-				'no-use-before-define': 'warn'
+				'no-use-before-define': 'warn',
+				camelcase: 'warn',
+				'no-promise-executor-return': 'warn'
 			}
 		}
 	]

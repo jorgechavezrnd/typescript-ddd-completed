@@ -1,7 +1,7 @@
 import { CourseCreator } from '../../../../../src/Contexts/Mooc/Courses/application/CourseCreator';
 import { CourseNameLengthExceeded } from '../../../../../src/Contexts/Mooc/Courses/domain/CourseNameLengthExceeded';
+import EventBusMock from '../../Shared/domain/EventBusMock';
 import { CourseRepositoryMock } from '../__mocks__/CourseRepositoryMock';
-import EventBusMock from '../__mocks__/EventBusMock';
 import { CourseCreatedDomainEventMother } from '../domain/CourseCreatedDomainEventMother';
 import { CourseMother } from '../domain/CourseMother';
 import { CreateCourseRequestMother } from './CreateCourseRequestMother';
