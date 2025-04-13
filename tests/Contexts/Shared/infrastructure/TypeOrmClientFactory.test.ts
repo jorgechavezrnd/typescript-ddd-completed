@@ -9,10 +9,10 @@ describe('TypeOrmClientFactory', () => {
 	beforeEach(async () => {
 		client = await factory.createClient('test', {
 			host: 'localhost',
-			port: 5432,
+			port: 5433,
 			username: 'codely',
 			password: 'codely',
-			database: 'mooc-backend-dev'
+			database: 'mooc-backend-test'
 		});
 	});
 
@@ -28,10 +28,10 @@ describe('TypeOrmClientFactory', () => {
 	it('creates a new client if it does not exist a client with the given name', async () => {
 		const newClient = await factory.createClient('test2', {
 			host: 'localhost',
-			port: 5432,
+			port: 5433,
 			username: 'codely',
 			password: 'codely',
-			database: 'mooc-backend-dev'
+			database: 'mooc-backend-test'
 		});
 
 		expect(newClient).not.toBe(client);
@@ -43,10 +43,10 @@ describe('TypeOrmClientFactory', () => {
 	it('returns a client if it already exists', async () => {
 		const newClient = await factory.createClient('test', {
 			host: 'localhost',
-			port: 5432,
+			port: 5433,
 			username: 'codely',
 			password: 'codely',
-			database: 'mooc-backend-dev'
+			database: 'mooc-backend-test'
 		});
 
 		expect(newClient).toBe(client);
