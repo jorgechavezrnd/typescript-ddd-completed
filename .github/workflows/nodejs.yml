@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [22.14.0, 23.x]
+        node-version: [21.x, 23.x]
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version }}
