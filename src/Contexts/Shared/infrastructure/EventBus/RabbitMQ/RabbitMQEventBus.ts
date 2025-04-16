@@ -50,10 +50,10 @@ export class RabbitMQEventBus implements EventBus {
 		for (const event of events) {
 			try {
 				const routingKey = event.eventName;
-				const content = this.serialize(event);
+				const content = this.toBuffer(event);
 				const options = this.options(event);
 
-				await this.connection.publish({ routingKey, content, options, exchange: this.exchange });
+				await this.connection.publish({ exchange: this.exchange, routingKey, content, options });
 			} catch (error: any) {
 				await this.failoverPublisher.publish(event);
 			}
@@ -68,7 +68,7 @@ export class RabbitMQEventBus implements EventBus {
 		};
 	}
 
-	private serialize(event: DomainEvent): Buffer {
+	private toBuffer(event: DomainEvent): Buffer {
 		const eventPrimitives = DomainEventJsonSerializer.serialize(event);
 
 		return Buffer.from(eventPrimitives);

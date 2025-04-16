@@ -11,8 +11,16 @@ services:
       method: 'createConfig'
 
   Mooc.Shared.domain.EventBus:
-    class: ../../../../../Contexts/Shared/infrastructure/EventBus/InMemory/InMemoryAsyncEventBus
-    arguments: []
+    factory:
+      class: ../../../../../Contexts/Mooc/Shared/infrastructure/RabbitMQ/RabbitMQEventBusFactory
+      method: 'create'
+    arguments:
+      [
+        '@Mooc.Shared.DomainEventFailoverPublisher',
+        '@Mooc.Shared.RabbitMQConnection',
+        '@Mooc.Shared.RabbitMQQueueFormatter',
+        '@Mooc.Shared.RabbitMQConfig'
+      ]
 
   Mooc.Shared.ConnectionManager:
     factory:
@@ -31,3 +39,7 @@ services:
   Mooc.Shared.RabbitMQConfigurer:
     class: ../../../../../Contexts/Shared/infrastructure/EventBus/RabbitMQ/RabbitMQConfigurer
     arguments: ['@Mooc.Shared.RabbitMQConnection', '@Mooc.Shared.RabbitMQQueueFormatter']
+
+  Mooc.Shared.DomainEventFailoverPublisher:
+    class: ../../../../../Contexts/Shared/infrastructure/EventBus/DomainEventFailoverPublisher/DomainEventFailoverPublisher
+    arguments: ['@Mooc.Shared.ConnectionManager']

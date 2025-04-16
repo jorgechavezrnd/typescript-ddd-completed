@@ -3,8 +3,10 @@ import { ExchangeSetting } from '../../../../Shared/infrastructure/EventBus/Rabb
 import config from '../config';
 
 export type RabbitMQConfig = {
-	exchangeSettings: ExchangeSetting;
 	connectionSettings: ConnectionSettings;
+	exchangeSettings: ExchangeSetting;
+	maxRetries: number;
+	retryTtl: number;
 };
 
 export class RabbitMQConfigFactory {
