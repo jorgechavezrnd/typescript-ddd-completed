@@ -29,7 +29,8 @@ module.exports = {
 				'no-await-in-loop': 'warn',
 				'no-use-before-define': 'warn',
 				camelcase: 'warn',
-				'no-promise-executor-return': 'warn'
+				'no-promise-executor-return': 'warn',
+				radix: 'warn'
 			}
 		}
 	]
