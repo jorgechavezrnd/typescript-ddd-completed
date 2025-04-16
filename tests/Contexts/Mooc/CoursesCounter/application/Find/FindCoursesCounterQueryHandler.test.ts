@@ -1,9 +1,11 @@
 import { CoursesCounterFinder } from '../../../../../../src/Contexts/Mooc/CoursesCounter/application/Find/CoursesCounterFinder';
+import { FindCoursesCounterQuery } from '../../../../../../src/Contexts/Mooc/CoursesCounter/application/Find/FindCoursesCounterQuery';
+import { FindCoursesCounterQueryHandler } from '../../../../../../src/Contexts/Mooc/CoursesCounter/application/Find/FindCoursesCounterQueryHandler';
 import { CoursesCounterNotExist } from '../../../../../../src/Contexts/Mooc/CoursesCounter/domain/CoursesCounterNotExist';
 import { CoursesCounterRepositoryMock } from '../../__mocks__/CoursesCounterRepositoryMock';
 import { CoursesCounterMother } from '../../domain/CoursesCounterMother';
 
-describe('CoursesCounterFinder', () => {
+describe('FindCoursesCounterQueryHandler', () => {
 	let repository: CoursesCounterRepositoryMock;
 
 	beforeEach(() => {
@@ -14,16 +16,20 @@ describe('CoursesCounterFinder', () => {
 		const counter = CoursesCounterMother.random();
 		repository.returnOnSearch(counter);
 		const finder = new CoursesCounterFinder(repository);
+		const handler = new FindCoursesCounterQueryHandler(finder);
 
-		const response = await finder.run();
+		const response = await handler.handle(new FindCoursesCounterQuery());
 
 		repository.assertSearch();
-		expect(counter.total.value).toEqual(response);
+		expect(counter.total.value).toEqual(response.total);
 	});
 
 	it('should throw an exception when courses counter does not exists', async () => {
 		const finder = new CoursesCounterFinder(repository);
+		const handler = new FindCoursesCounterQueryHandler(finder);
 
-		await expect(finder.run()).rejects.toBeInstanceOf(CoursesCounterNotExist);
+		await expect(handler.handle(new FindCoursesCounterQuery())).rejects.toBeInstanceOf(
+			CoursesCounterNotExist
+		);
 	});
 });

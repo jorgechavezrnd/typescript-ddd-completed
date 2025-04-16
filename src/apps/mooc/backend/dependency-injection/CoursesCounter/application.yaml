@@ -19,3 +19,9 @@ services:
   Mooc.CoursesCounter.CoursesCounterFinder:
     class: ../../../../../Contexts/Mooc/CoursesCounter/application/Find/CoursesCounterFinder
     arguments: ["@Mooc.CoursesCounter.CoursesCounterRepository"]
+
+  Mooc.CoursesCounter.FindCoursesCounterQueryHandler:
+    class: ../../../../../Contexts/Mooc/CoursesCounter/application/Find/FindCoursesCounterQueryHandler
+    arguments: ['@Mooc.CoursesCounter.CoursesCounterFinder']
+    tags:
+      - { name: 'queryHandler' }
