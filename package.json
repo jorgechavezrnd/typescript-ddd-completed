@@ -12,7 +12,6 @@
   },
   "scripts": {
     "dev:mooc:backend": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules  ./src/apps/mooc/backend/start.ts",
-    "install:backoffice:fronted": "cd ./src/apps/backoffice/frontend && npm install",
     "dev:backoffice:frontend": "cd ./src/apps/backoffice/frontend && npm start",
     "dev:backoffice:backend": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules  ./src/apps/backoffice/backend/start.ts",
     "lint": "eslint --ignore-path .gitignore .",
@@ -26,7 +25,10 @@
     "build:tsc": "tsc -p tsconfig.prod.json",
     "build:di": "copy 'src/**/*.{json,yaml,html,png}' dist/src",
     "build:clean": "rm -r dist; exit 0",
-    "command:mooc:rabbitmq": "NODE_ENV=production ts-node ./src/apps/mooc/backend/command/runConfigureRabbitMQCommand"
+    "build:backoffice:frontend": "cd ./src/apps/backoffice/frontend && npm run build",
+    "install:backoffice:fronted": "cd ./src/apps/backoffice/frontend && npm install",
+    "command:mooc:rabbitmq": "NODE_ENV=production ts-node ./src/apps/mooc/backend/command/runConfigureRabbitMQCommand",
+    "command:backoffice:rabbitmq": "NODE_ENV=production ts-node src/apps/backoffice/backend/command/runConfigureRabbitMQCommand"
   },
   "dependencies": {
     "@types/cors": "^2.8.12",
