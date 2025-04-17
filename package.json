@@ -14,7 +14,7 @@
     "dev:mooc:backend": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules  ./src/apps/mooc/backend/start.ts",
     "dev:backoffice:frontend": "cd ./src/apps/backoffice/frontend && npm start",
     "dev:backoffice:backend": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules  ./src/apps/backoffice/backend/start.ts",
-    "lint": "eslint --ignore-path .gitignore .",
+    "lint": "eslint --ignore-path .gitignore --ignore-pattern ./src/apps/backoffice/frontend/* .",
     "lint:fix": "npm run lint -- --fix",
     "test": "npm run test:unit && npm run test:features",
     "test:unit": "NODE_ENV=test jest",
