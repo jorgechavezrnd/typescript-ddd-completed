@@ -1,5 +1,5 @@
-import { CourseCreator } from '../../../../../src/Contexts/Mooc/Courses/application/CourseCreator';
-import { CreateCourseCommandHandler } from '../../../../../src/Contexts/Mooc/Courses/application/CreateCourseCommandHandler';
+import { CourseCreator } from '../../../../../src/Contexts/Mooc/Courses/application/Create/CourseCreator';
+import { CreateCourseCommandHandler } from '../../../../../src/Contexts/Mooc/Courses/application/Create/CreateCourseCommandHandler';
 import { CourseNameLengthExceeded } from '../../../../../src/Contexts/Mooc/Courses/domain/CourseNameLengthExceeded';
 import EventBusMock from '../../Shared/domain/EventBusMock';
 import { CourseRepositoryMock } from '../__mocks__/CourseRepositoryMock';

@@ -17,6 +17,10 @@ export class FileCourseRepository implements CourseRepository {
 		);
 	}
 
+	async searchAll(): Promise<Course[]> {
+		return [];
+	}
+
 	async search(courseId: string): Promise<Course> {
 		const courseData = await fs.promises.readFile(this.filePath(courseId));
 		const { id, name, duration } = deserialize(courseData);

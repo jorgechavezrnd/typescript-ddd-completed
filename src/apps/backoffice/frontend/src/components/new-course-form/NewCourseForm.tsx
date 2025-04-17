@@ -51,7 +51,7 @@ function NewCourseForm({ onSuccess, onError }: { onSuccess?: (event: NewCourse) 
 
   return (
     <Form
-      className="w-full max-w-lg float-right text-left"
+      className="w-full text-left"
       id="create-course"
       title="Crear curso"
       submitLabel="Crear curso!"

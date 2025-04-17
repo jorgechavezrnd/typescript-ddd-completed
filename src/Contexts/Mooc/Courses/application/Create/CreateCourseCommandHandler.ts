@@ -1,9 +1,9 @@
-import { Command } from '../../../Shared/domain/Command';
-import { CommandHandler } from '../../../Shared/domain/CommandHandler';
-import { CourseId } from '../../Shared/domain/Courses/CourseId';
-import { CourseDuration } from '../domain/CourseDuration';
-import { CourseName } from '../domain/CourseName';
-import { CreateCourseCommand } from '../domain/CreateCourseCommand';
+import { Command } from '../../../../Shared/domain/Command';
+import { CommandHandler } from '../../../../Shared/domain/CommandHandler';
+import { CourseId } from '../../../Shared/domain/Courses/CourseId';
+import { CourseDuration } from '../../domain/CourseDuration';
+import { CourseName } from '../../domain/CourseName';
+import { CreateCourseCommand } from '../../domain/CreateCourseCommand';
 import { CourseCreator } from './CourseCreator';
 
 export class CreateCourseCommandHandler implements CommandHandler<CreateCourseCommand> {

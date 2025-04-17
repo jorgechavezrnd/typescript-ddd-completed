@@ -1,4 +1,4 @@
-type Course = {
+export type Course = {
   id: string;
   name: string;
   duration: string;
@@ -14,5 +14,19 @@ const post = async (url: string, body: Record<string, unknown>) => {
   );
 }
 
+const get = async (url: string) => {
+  return await fetch(url,
+    {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    }
+  );
+}
+
 export const createCourse = (course: Course) =>
   post('http://localhost:4000/courses', course);
+
+export const getAllCourses = async () => {
+  const response = await get('http://localhost:4000/courses');
+  return await response.json() as Course[];
+}

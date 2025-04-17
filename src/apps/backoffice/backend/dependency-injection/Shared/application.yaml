@@ -51,3 +51,11 @@ services:
   Backoffice.Shared.domain.CommandBus:
     class: ../../../../../Contexts/Shared/infrastructure/CommandBus/InMemoryCommandBus
     arguments: ['@Backoffice.Shared.CommandHandlers']
+
+  Backoffice.Shared.QueryHandlers:
+    class: ../../../../../Contexts/Shared/infrastructure/QueryBus/QueryHandlers
+    arguments: ['!tagged queryHandler']
+
+  Backoffice.Shared.domain.QueryBus:
+    class: ../../../../../Contexts/Shared/infrastructure/QueryBus/InMemoryQueryBus
+    arguments: ['@Backoffice.Shared.QueryHandlers']

@@ -12,6 +12,10 @@ export class CourseRepositoryMock implements CourseRepository {
 		await this.saveMock(course);
 	}
 
+	async searchAll(): Promise<Course[]> {
+		return [];
+	}
+
 	assertSaveHaveBeenCalledWith(expected: Course): void {
 		expect(this.saveMock).toHaveBeenCalledWith(expected);
 	}
