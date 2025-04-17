@@ -4,7 +4,7 @@ export class BackofficeBackendApp {
 	private server?: Server;
 
 	async start() {
-		const port = process.env.PORT || '3000';
+		const port = process.env.PORT || '4000';
 		this.server = new Server(port);
 
 		return this.server.listen();
