@@ -12,6 +12,7 @@
   },
   "scripts": {
     "dev:mooc:backend": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules  ./src/apps/mooc/backend/start.ts",
+    "dev:backoffice:backend": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules  ./src/apps/backoffice/backend/start.ts",
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
     "test": "npm run test:unit && npm run test:features",
