@@ -1,5 +1,6 @@
 import { json, urlencoded } from 'body-parser';
 import compress from 'compression';
+import cors from 'cors';
 import errorHandler from 'errorhandler';
 import express, { Request, Response } from 'express';
 import Router from 'express-promise-router';
@@ -29,6 +30,7 @@ export class Server {
 		this.express.use(helmet.frameguard({ action: 'deny' }));
 		this.express.use(compress());
 		const router = Router();
+		router.use(cors());
 		router.use(errorHandler());
 		this.express.use(router);
 		registerRoutes(router);

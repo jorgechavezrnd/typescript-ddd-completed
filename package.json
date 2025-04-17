@@ -29,6 +29,7 @@
     "command:mooc:rabbitmq": "NODE_ENV=production ts-node ./src/apps/mooc/backend/command/runConfigureRabbitMQCommand"
   },
   "dependencies": {
+    "@types/cors": "^2.8.12",
     "amqplib": "^0.8.0",
     "body-parser": "^1.19.0",
     "bodybuilder": "^2.4.0",
@@ -39,6 +40,7 @@
     "cookie-parser": "^1.4.5",
     "cookie-session": "^1.4.0",
     "copy": "^0.3.2",
+    "cors": "^2.8.5",
     "errorhandler": "^1.5.1",
     "express": "^4.17.1",
     "express-promise-router": "^4.1.0",

@@ -1,5 +1,9 @@
 services:
 
-  App.Backoffice.Backend.controllers.StatusGetController:
+  Apps.Backoffice.Backend.controllers.StatusGetController:
     class: ../../controllers/StatusGetController
     arguments: []
+
+  Apps.Backoffice.Backend.controllers.CoursesPostController:
+    class: ../../controllers/CoursesPostController
+    arguments: ['@Backoffice.Shared.domain.CommandBus']
