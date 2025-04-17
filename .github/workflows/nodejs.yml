@@ -21,6 +21,9 @@ jobs:
       - name: npm install
         run: |
           npm install
+      - name: npm install frontend
+        run: |
+          npm run install:backoffice:fronted
       - name: npm run lint
         run: |
           npm run lint
