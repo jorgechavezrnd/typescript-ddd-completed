@@ -27,6 +27,8 @@ module.exports = {
 				'@typescript-eslint/no-unsafe-call': 'warn',
 				'@typescript-eslint/no-non-null-assertion': 'warn',
 				'@typescript-eslint/no-empty-interface': 'warn',
+				'@typescript-eslint/no-useless-constructor': 'warn',
+				'@typescript-eslint/unbound-method': 'warn',
 				'no-await-in-loop': 'warn',
 				'no-use-before-define': 'warn',
 				camelcase: 'warn',

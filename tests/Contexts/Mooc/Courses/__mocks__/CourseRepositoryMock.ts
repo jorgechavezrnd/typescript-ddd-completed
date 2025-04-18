@@ -3,20 +3,33 @@ import { CourseRepository } from '../../../../../src/Contexts/Mooc/Courses/domai
 
 export class CourseRepositoryMock implements CourseRepository {
 	private readonly saveMock: jest.Mock;
+	private readonly searchAllMock: jest.Mock;
+	private courses: Array<Course> = [];
 
 	constructor() {
 		this.saveMock = jest.fn();
+		this.searchAllMock = jest.fn();
 	}
 
 	async save(course: Course): Promise<void> {
 		await this.saveMock(course);
 	}
 
-	async searchAll(): Promise<Course[]> {
-		return [];
-	}
-
 	assertSaveHaveBeenCalledWith(expected: Course): void {
 		expect(this.saveMock).toHaveBeenCalledWith(expected);
+	}
+
+	returnOnSearchAll(courses: Array<Course>) {
+		this.courses = courses;
+	}
+
+	assertSearchAll() {
+		expect(this.searchAllMock).toHaveBeenCalled();
+	}
+
+	async searchAll(): Promise<Course[]> {
+		this.searchAllMock();
+
+		return this.courses;
 	}
 }
