@@ -26,7 +26,7 @@ const get = async (url: string) => {
 export const createCourse = (course: Course) => post('http://localhost:4000/courses', course);
 
 export const getAllCourses = async () => {
-  const response = await get('http://localhost:3000/courses');
+  const response = await get('http://localhost:4000/courses');
   return (await response.json()) as Course[];
 };
 
