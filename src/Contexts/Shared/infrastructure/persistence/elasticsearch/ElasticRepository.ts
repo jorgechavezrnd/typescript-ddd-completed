@@ -4,7 +4,9 @@ import bodybuilder, { Bodybuilder } from 'bodybuilder';
 import httpStatus from 'http-status';
 
 import { AggregateRoot } from '../../../domain/AggregateRoot';
+import { Criteria } from '../../../domain/criteria/Criteria';
 import ElasticConfig from './ElasticConfig';
+import { ElasticCriteriaConverter } from './ElasticCriteriaConverter';
 
 interface SearchResult<T> {
 	hits: SearchHitsMetadata<T>;
@@ -17,10 +19,14 @@ interface SearchHitsMetadata<T> {
 type SearchHit<T> = { _source: T };
 
 export abstract class ElasticRepository<T extends AggregateRoot> {
+	private readonly criteriaConverter: ElasticCriteriaConverter;
+
 	constructor(
 		private readonly _client: Promise<ElasticClient>,
 		private readonly config: ElasticConfig
-	) {}
+	) {
+		this.criteriaConverter = new ElasticCriteriaConverter();
+	}
 
 	protected indexName(): string {
 		return this.config.indexName;
@@ -63,6 +69,15 @@ export abstract class ElasticRepository<T extends AggregateRoot> {
 
 	private isResponseError(e: unknown): e is ResponseError {
 		return e instanceof ResponseError;
+	}
+
+	protected async searchByCriteria(
+		criteria: Criteria,
+		unserializer: (data: any) => T
+	): Promise<T[]> {
+		const body = this.criteriaConverter.convert(criteria);
+
+		return this.searchInElasticWithBuilder(unserializer, body);
 	}
 
 	protected async persist(id: string, aggregateRoot: T): Promise<void> {

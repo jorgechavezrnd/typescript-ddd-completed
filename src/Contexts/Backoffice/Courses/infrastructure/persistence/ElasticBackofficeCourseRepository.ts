@@ -16,6 +16,6 @@ export class ElasticBackofficeCourseRepository
 	}
 
 	async matching(criteria: Criteria): Promise<BackofficeCourse[]> {
-		throw new Error('Method not implemented.');
+		return this.searchByCriteria(criteria, BackofficeCourse.fromPrimitives);
 	}
 }

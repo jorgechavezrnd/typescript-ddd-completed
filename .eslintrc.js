@@ -33,7 +33,8 @@ module.exports = {
 				'no-use-before-define': 'warn',
 				camelcase: 'warn',
 				'no-promise-executor-return': 'warn',
-				radix: 'warn'
+				radix: 'warn',
+				'array-callback-return': 'warn'
 			}
 		}
 	]
